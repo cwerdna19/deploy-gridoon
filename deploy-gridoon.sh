@@ -29,8 +29,12 @@ password=$GIT_PASSWORD" | git credential approve
 # Clone the repository
 git clone https://github.com/hashtagbowl/Gridoon ~/Gridoon
 
-# Make update script executable
+# Make scripts executable
 chmod +x ~/deploy-gridoon/update-gridoon.sh
+chmod +x ~/deploy-gridoon/create_self_signed_cert.sh
+
+
+# Set alias for update-gridoon so it can be easily ran
 alias update-gridoon='sh ~/deploy-gridoon/update-gridoon.sh'
 
 # Enable UFW and open port 443
