@@ -27,15 +27,16 @@ username=$GIT_USERNAME
 password=$GIT_PASSWORD" | git credential approve
 
 # Clone the repository
-git clone https://github.com/hashtagbowl/Gridoon
+git clone https://github.com/hashtagbowl/Gridoon ~/Gridoon
 
 # Make update script executable
-chmod +x update-gridoon.sh
-alias update-gridoon='sh update-gridoon.sh'
+chmod +x ~/deploy-gridoon/update-gridoon.sh
+alias update-gridoon='sh ~/deploy-gridoon/update-gridoon.sh'
 
 # Enable UFW and open port 443
-ufw enable
 ufw allow 443
+ufw allow 22
+echo "y" | ufw enable
 
 # Build and run Docker image
 docker compose -f ~/Gridoon/docker-compose.yml -p gridoon-website up -d
