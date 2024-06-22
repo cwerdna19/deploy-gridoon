@@ -3,11 +3,6 @@
 # Exit on any error
 set -e
 
-# Temporarily set Git credentials
-GIT_USERNAME="your_username"
-GIT_PASSWORD="your_password"
-GIT_CREDENTIALS_PATH=$(git config --global credential.helper | awk '{print $2}')
-
 # Update and upgrade the system
 apt-get update
 apt-get upgrade -y
@@ -21,17 +16,18 @@ apt-get install -y docker-compose-plugin git ufw
 # Configure Git to store credentials indefinitely
 git config --global credential.helper store
 
-# Create a credentials file with the credentials
-echo "https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com" > ~/.git-credentials
+# Temporarily set Git credentials
+GIT_USERNAME="your_username"
+GIT_PASSWORD="your_password"
+
+# Store the credentials using the git credential helper
+echo "protocol=https
+host=github.com
+username=$GIT_USERNAME
+password=$GIT_PASSWORD" | git credential approve
 
 # Clone the repository
 git clone https://github.com/hashtagbowl/Gridoon
-
-# Clean up the temporary credentials
-rm ~/.git-credentials
-
-# Ensure credentials are stored in the global configuration
-git config --global credential.helper store
 
 # Make update script executable
 chmod +x update-gridoon.sh
