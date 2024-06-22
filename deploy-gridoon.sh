@@ -31,7 +31,7 @@ git clone https://github.com/hashtagbowl/Gridoon ~/Gridoon
 
 # Make scripts executable
 chmod +x ~/deploy-gridoon/update-gridoon.sh
-chmod +x ~/deploy-gridoon/create_self_signed_cert.sh
+chmod +x ~/Gridoon/create_self_signed_cert.sh
 
 
 # Set alias for update-gridoon so it can be easily ran
