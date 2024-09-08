@@ -48,10 +48,9 @@ alias update-gridoon='sh ~/deploy-gridoon/update-gridoon.sh'
 # Make .env
 echo "Setting config variables"
 cp ~/Gridoon/nginx-certbot.example.env ~/Gridoon/nginx-certbot.env
-sed -i 's/your@email.org/${EMAIL}/g' ~/Gridoon/nginx-certbot.env
-sed -i 's/gridoon.com/${DOMAIN_NAME}/g' ~/Gridoon/user_conf.d/nginx.conf
-sed -i 's/www.gridoon.com/www.${DOMAIN_NAME}/g' ~/Gridoon/user_conf.d/nginx.conf
-
+sed -i "s/your@email.org/${EMAIL}/g" ~/Gridoon/nginx-certbot.env
+sed -i "s/gridoon.com/${DOMAIN_NAME}/g" ~/Gridoon/user_conf.d/nginx.conf
+sed -i "s/www.gridoon.com/www.${DOMAIN_NAME}/g" ~/Gridoon/user_conf.d/nginx.conf
 
 # Enable UFW and open port 443
 echo "Opening ports 80, 443, and 22"
