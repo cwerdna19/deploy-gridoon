@@ -20,7 +20,7 @@ git config --global credential.helper store
 # Temporarily set Git credentials
 read -p "Enter your Github username: " GIT_USERNAME
 echo
-read -p -s "Enter your Github Personal Access Token: " GIT_PASSWORD
+read -s -p "Enter your Github Personal Access Token: " GIT_PASSWORD
 echo
 read -p "Enter your email address: " EMAIL
 echo
@@ -46,8 +46,12 @@ chmod +x ~/deploy-gridoon/update-gridoon.sh
 alias update-gridoon='sh ~/deploy-gridoon/update-gridoon.sh'
 
 # Make .env
+echo "Setting config variables"
 cp ~/Gridoon/nginx-certbot.example.env ~/Gridoon/nginx-certbot.env
 sed -i 's/your@email.org/${EMAIL}/g' ~/Gridoon/nginx-certbot.env
+sed -i 's/gridoon.com/${DOMAIN_NAME}/g' ~/Gridoon/user_conf.d/nginx.conf
+sed -i 's/www.gridoon.com/www.${DOMAIN_NAME}/g' ~/Gridoon/user_conf.d/nginx.conf
+
 
 # Enable UFW and open port 443
 echo "Opening ports 80, 443, and 22"
