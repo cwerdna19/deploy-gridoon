@@ -66,4 +66,4 @@ docker compose -f ~/Gridoon/docker-compose.yml -p gridoon-website up -d
 
 echo "You're good to go! You can reach your website at ${DOMAIN_NAME}"
 echo "Update the app by entering 'sudo update-gridoon'"
-echo "Add books by entering ' sudo get-books"
+echo "Add books by entering 'sudo get-books'"
