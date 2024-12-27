@@ -1,5 +1,5 @@
 #!/bin/bash
-
+cd /root/Gridoon
 git -C ~/Gridoon pull
 docker compose down --volumes --remove-orphans
 docker compose up -d --no-deps --build nodejs
